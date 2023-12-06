@@ -1,20 +1,25 @@
 package com.example.userapp_proxy.controllers;
 
 import com.example.userapp_proxy.dtos.ProductDto;
+import com.example.userapp_proxy.services.IProductService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/products")
 
 public class ProductController {
-    @GetMapping("")
-    public String getSingleProduct(){
-     return  "Get Controller";
+    IProductService productService;
+
+    public ProductController(IProductService productService){
+        this.productService = productService;
     }
 
+
     @GetMapping("/{productId}")
-    public String getSingleProductById(@PathVariable("productId") Long productId){
+    public String getSingleProduct(@PathVariable("productId") Long productId){
+       productService.getSingleProduct(productId);
         return  "Get Controller " + productId;
+
     }
 
     @PostMapping()
