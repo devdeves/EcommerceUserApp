@@ -1,15 +1,18 @@
 package com.example.userapp_proxy.services;
 
 import com.example.userapp_proxy.dtos.ProductDto;
+import com.example.userapp_proxy.models.Product;
+
+import java.util.List;
 
 public interface IProductService {
-    String getAllProducts();
+    List<Product> getAllProducts();
 
-    String getSingleProduct(Long productId);
+    Product getSingleProduct(Long productId);
 
-    String addNewProduct(ProductDto productDto);
+    Product addNewProduct(ProductDto productDto);
 
-    String updateProduct(ProductDto productDto);
+    Product updateProduct(Long productId , Product product);
 
     String deleteProduct(ProductDto productDto);
 }
